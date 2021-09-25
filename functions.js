@@ -44,8 +44,15 @@ Array.prototype.myEvery = function(callbackfn) {
 };
 
 // REDUCE //
-Array.prototype.myReduce = function() {
+Array.prototype.myReduce = function(callbackfn, new_num) {
+    if(new_num === undefined) new_num = 0;
+    let result = 0 + new_num;
+    for(let i = 0; i < this.length; i++)
+    {
+        result = callbackfn(result, this[i]);
+        if(i+1 === this.length) return result;
 
+    }
 };
 
 // INCLUDES //
@@ -161,3 +168,8 @@ console.log(words.indexOf('rosa', 8)); //default
 console.log(words.myLastIndexOf('rosa')); //created
 console.log(words.lastIndexOf('rosa')); //default
 //end of tests
+
+//tests myReduce
+console.log(arr.myReduce(reducer  = (current_value, next_value)=>current_value + next_value, 3));
+console.log(arr.reduce(reducer, 3));
+//end of test
