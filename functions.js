@@ -54,8 +54,23 @@ Array.prototype.myIncludes = function() {
 };
 
 // INDEXOF //
-Array.prototype.myIndexOf = function() {
-
+Array.prototype.myIndexOf = function(word, index) { 
+    let absent = -1;
+    if(index){
+        for(let i = index; i < this.length;i++)
+        {
+            if(this[i] ===word) return i;
+            else continue;
+        }
+    }
+    else{
+        for(let i = 0; i < this.length; i++)
+        {
+            if(this[i]===word) return i;
+            else continue;
+        }
+    }
+    return absent;
 };
 
 // PUSH //
@@ -88,9 +103,9 @@ Object.grabValues = function() {
 //TESTS//
 
 const arr = [1, 2, 3];
-const words = ['sam', 'tucker', 'jeff','peacon','rosa','leslie','monic', 'jefferson','samuael']
+const words = ['sam', 'tucker', 'jeff','peacon','rosa','leslie','monic', 'rosa', 'jefferson','samuael']
 const numerals = [15, 23, 1, 5, 31, 312, 60];
-/*
+
 //tests myEach
 arr.myEach((x, i ,arr) => console.log(x, i, arr)); //created
 console.log('\n');
@@ -115,8 +130,14 @@ console.log(result_arr, '\n');
 const new_r = words.filter(word => word.length === 6); //default
 console.log(new_r);
 //end of test
-*/
+
 //tests every
 console.log(numerals.myEvery(Value => Value > 400)); //created
 console.log(numerals.every(Value => Value > 400)); //default
+//end of test
+
+
+//tests indexOf
+console.log(words.myIndexOf('rosa', 8)); //created
+console.log(words.indexOf('rosa', 8)); //default
 //end of test
