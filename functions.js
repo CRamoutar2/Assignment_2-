@@ -7,8 +7,12 @@ Array.prototype.myEach = function(callbackfn) {
 };
 
 // MAP //
-Array.prototype.myMap = function() {
-
+Array.prototype.myMap = function(callbackfn) {
+    let return_arr = [];
+    for(let i = 0; i < this.length; i++){
+        return_arr.push(callbackfn(this[i]));
+    }
+    return return_arr;
 };
 
 // FILTER //
@@ -28,8 +32,18 @@ Array.prototype.myFilter = function(callbackfn) {
 };
 
 // SOME //
-Array.prototype.mySome = function() {
-
+Array.prototype.mySome = function(callbackfn) {
+    let is_even = false;
+    
+    for(let i = 0; i < this.length; i++){
+        if(callbackfn(this[i])){
+            is_even = true;
+        }
+        else{
+            continue;
+        }
+    }
+    return is_even;
 };
 
 // EVERY //
@@ -141,8 +155,8 @@ Object.grabValues = function() {
 
 const arr = [1, 2, 3];
 const words = ['sam', 'tucker', 'jeff','peacon','rosa','leslie','monic', 'rosa', 'jefferson','samuael']
-const numerals = [15, 23, 1, 5, 31, 312, 60];
-
+const numerals = [15, 23, 1, 5, 31, 311, 61];
+/*
 //tests myEach
 arr.myEach((x, i ,arr) => console.log(x, i, arr)); //created
 console.log('\n');
@@ -196,3 +210,15 @@ console.log(words.includes('rosa', 8)); //default
 console.log(numerals.myIncludes(312, 3)); //created
 console.log(numerals.includes(312, 3)); //default
 //end of tests
+
+//tests mysum
+console.log(numerals.mySome(even = (element) => element%2 ===0, even)); //created
+console.log(numerals.some(even));//defeault 
+//needs more testing//
+*/
+//tests mymap
+const map1 = arr.myMap(x => x * 2);
+console.log(map1);
+
+const map2 = arr.map(x => x*2);
+console.log(map2);
