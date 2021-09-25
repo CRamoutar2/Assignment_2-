@@ -86,8 +86,23 @@ Array.prototype.myPush = function(...args) {
 };
 
 // LASTINDEXOF //
-Array.prototype.myLastIndexOf = function() {
-
+Array.prototype.myLastIndexOf = function(word, index) {
+let absent = -1;
+if(index){
+    for(let i = index; i > 0;i--)
+    {
+        if(this[i] ===word) return i;
+        else continue;
+    }
+}
+else{
+    for(let i = this.length; i > 0; i--)
+    {
+        if(this[i]===word) return i;
+        else continue;
+    }
+}
+return absent;
 };
 
 // KEYS //
@@ -141,3 +156,8 @@ console.log(numerals.every(Value => Value > 400)); //default
 console.log(words.myIndexOf('rosa', 8)); //created
 console.log(words.indexOf('rosa', 8)); //default
 //end of test
+
+//tests lastIndexOf
+console.log(words.myLastIndexOf('rosa')); //created
+console.log(words.lastIndexOf('rosa')); //default
+//end of tests
