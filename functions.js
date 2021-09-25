@@ -33,8 +33,14 @@ Array.prototype.mySome = function() {
 };
 
 // EVERY //
-Array.prototype.myEvery = function() {
-
+Array.prototype.myEvery = function(callbackfn) {
+    let all = true;
+    for(let i = 0; i < this.length;i++)
+    {
+        if(this[i]===undefined) continue;
+        if(!callbackfn(this[i])) {all =false};
+    }
+    return all;
 };
 
 // REDUCE //
@@ -83,7 +89,8 @@ Object.grabValues = function() {
 
 const arr = [1, 2, 3];
 const words = ['sam', 'tucker', 'jeff','peacon','rosa','leslie','monic', 'jefferson','samuael']
-
+const numerals = [15, 23, 1, 5, 31, 312, 60];
+/*
 //tests myEach
 arr.myEach((x, i ,arr) => console.log(x, i, arr)); //created
 console.log('\n');
@@ -107,4 +114,9 @@ const result_arr = words.myFilter(word => word.length === 6); //created
 console.log(result_arr, '\n');
 const new_r = words.filter(word => word.length === 6); //default
 console.log(new_r);
+//end of test
+*/
+//tests every
+console.log(numerals.myEvery(Value => Value > 400)); //created
+console.log(numerals.every(Value => Value > 400)); //default
 //end of test
