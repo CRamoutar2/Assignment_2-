@@ -56,7 +56,22 @@ Array.prototype.myReduce = function(callbackfn, new_num) {
 };
 
 // INCLUDES //
-Array.prototype.myIncludes = function() {
+Array.prototype.myIncludes = function(value, loc) {
+    if(loc){
+        for(let i = loc; i < this.length; i++)
+        {
+            if(this[i] === value) return true;
+        }
+        return false;
+    }
+
+    else{
+        for(let i = 0; i < this.length; i++)
+        {
+            if(this[i] === value) return true;
+        }
+        return false;
+    }
 
 };
 
@@ -170,6 +185,14 @@ console.log(words.lastIndexOf('rosa')); //default
 //end of tests
 
 //tests myReduce
-console.log(arr.myReduce(reducer  = (current_value, next_value)=>current_value + next_value, 3));
-console.log(arr.reduce(reducer, 3));
+console.log(arr.myReduce(reducer  = (current_value, next_value)=>current_value + next_value, 3)); //created
+console.log(arr.reduce(reducer, 3)); //default
 //end of test
+
+//tests myincludes
+console.log(words.myIncludes('rosa', 8)); //created
+console.log(words.includes('rosa', 8)); //default
+
+console.log(numerals.myIncludes(312, 3)); //created
+console.log(numerals.includes(312, 3)); //default
+//end of tests
