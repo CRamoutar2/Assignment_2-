@@ -142,9 +142,14 @@ return absent;
 };
 
 // KEYS //
-Object.grabKeys = function() {
-
-};
+Object.grabKeys = function(object) {
+    let i = 0;
+    let ret_arr = [];
+    for(i in object){
+        ret_arr.push[i];
+    }
+    return ret_arr
+}
 
 // VALUES //
 Object.grabValues = function() {
@@ -156,6 +161,7 @@ Object.grabValues = function() {
 const arr = [1, 2, 3];
 const words = ['sam', 'tucker', 'jeff','peacon','rosa','leslie','monic', 'rosa', 'jefferson','samuael']
 const numerals = [15, 23, 1, 5, 31, 311, 61];
+const obj1 = {a: 'sam', b:'rem', c:'cue', b_around:'sam'};
 /*
 //tests myEach
 arr.myEach((x, i ,arr) => console.log(x, i, arr)); //created
@@ -215,10 +221,16 @@ console.log(numerals.includes(312, 3)); //default
 console.log(numerals.mySome(even = (element) => element%2 ===0, even)); //created
 console.log(numerals.some(even));//defeault 
 //needs more testing//
-*/
+
 //tests mymap
-const map1 = arr.myMap(x => x * 2);
+const map1 = arr.myMap(x => x * 2); //created
 console.log(map1);
 
-const map2 = arr.map(x => x*2);
+const map2 = arr.map(x => x*2); //default
 console.log(map2);
+//end of test
+*/
+//tests mykeys
+console.log(Object.keys(obj1)); //created
+console.log(Object.keys(obj1)); //default
+//end of test
